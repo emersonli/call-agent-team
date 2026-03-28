@@ -172,10 +172,18 @@ python scripts/validate_config.py configs/teams/<团队类型>.yaml
 
 ## 📖 详细文档
 
+**核心指南**:
 - [使用示例](examples.md) - 多领域实际案例演示
-- [详细参考](reference.md) - 软件开发全流程深度指南
+- [软件研发参考](docs/software-development-reference.md) - 软件开发全流程深度指南
+- [政府行政参考](docs/government-administration-reference.md) - 三省六部制详解
+
+**配置指南**:
 - [GitHub 认证](docs/GITHUB_AUTH_SETUP.md) - 安全配置指南
 - [SSH Key 配置](docs/SSH_KEY_SETUP_COMPLETE.md) - SSH 方式推送指南
+
+**协作模式**:
+- [软件研发协作模式](collaboration/software/) - agile-sprint, rapid-response
+- _更多领域协作模式规划中..._
 
 ## 🤝 贡献指南
 

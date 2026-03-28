@@ -224,8 +224,9 @@ roleDefinitions:
 - 详细的角色定义
 - 具体的工作流程
 
-### Level 4: 最佳实践（reference.md）
-- 深度案例分析
+### Level 4: 最佳实践（docs/ 目录下按领域分类）
+- [软件研发参考](docs/software-development-reference.md) - 软件开发深度指南
+- [政府行政参考](docs/government-administration-reference.md) - 三省六部制详解
 - 常见问题解答
 - 优化建议
 
@@ -238,7 +239,8 @@ roleDefinitions:
 
 **核心文档**:
 - [使用示例](examples.md) - 实际案例演示
-- [详细参考](reference.md) - 深度指南
+- [软件研发参考](docs/software-development-reference.md) - 软件开发深度指南
+- [政府行政参考](docs/government-administration-reference.md) - 三省六部制详解
 - [GitHub 仓库](https://github.com/emersonli/call-agent-team) - 源代码
 
 **团队配置**:
@@ -246,9 +248,9 @@ roleDefinitions:
 - [政府行政团队](configs/teams/government-team.yaml) - 政策制定
 - _更多团队类型持续更新中..._
 
-**协作模式**:
-- [敏捷冲刺](collaboration/agile-sprint.yaml) - 迭代开发
-- [快速响应](collaboration/rapid-response.yaml) - 紧急项目
+**协作模式库**:
+- [软件研发协作模式](collaboration/software/) - agile-sprint, rapid-response
+- _更多领域协作模式规划中..._
 
 ---
 
