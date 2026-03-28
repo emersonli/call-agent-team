@@ -1,0 +1,261 @@
+modeId: agile-sprint
+name: 敏捷冲刺模式
+version: "1.0.0"
+category: iterative-development
+
+description: |
+  基于 Scrum 框架的敏捷开发协作模式，适合功能迭代和产品开发。
+  通过短周期迭代快速交付价值，持续改进。
+
+applicableScenarios:
+  - "功能迭代开发"
+  - "产品 MVP 构建"
+  - "快速试错项目"
+  - "需求变化频繁的项目"
+
+notSuitableFor:
+  - "需求极其明确且不变的项目"
+  - "合规强监管领域（需完整文档）"
+  - "维护期项目（可用 Kanban）"
+
+teamSize:
+  recommended: [3, 9]
+  optimal: 5
+  note: "亚马逊披萨原则：两个披萨能喂饱的团队"
+
+# 角色与职责 (RACI Matrix)
+raciMatrix:
+  activities:
+    - activity: 冲刺计划会
+      responsible: [product-manager, all-developers]
+      accountable: product-manager
+      consulted: [stakeholders]
+      informed: []
+    
+    - activity: 每日站会
+      responsible: [all-developers]
+      accountable: scrum-master
+      consulted: []
+      informed: [stakeholders]
+    
+    - activity: 代码审查
+      responsible: [developers]
+      accountable: tech-lead
+      consulted: []
+      informed: []
+    
+    - activity: 冲刺评审会
+      responsible: [all-developers]
+      accountable: product-manager
+      consulted: []
+      informed: [stakeholders]
+    
+    - activity: 冲刺回顾会
+      responsible: [all-developers]
+      accountable: scrum-master
+      consulted: []
+      informed: []
+
+# 工作流程
+workflow:
+  phases:
+    - phase: sprint-planning
+      name: 冲刺计划会
+      duration: "4 hours (for 2-week sprint)"
+      timing: "Sprint 第一天"
+      participants: [product-manager, all-developers]
+      facilitator: product-manager
+      
+      inputs:
+        - "产品 Backlog"
+        - "上一个 Sprint 的完成情况"
+        - "团队速率（Velocity）"
+      
+      outputs:
+        - "Sprint Backlog"
+        - "Sprint Goal"
+        - "任务分解和估时"
+      
+      agenda:
+        - "Product Owner 讲解需求优先级（30min）"
+        - "团队评估工作量和可行性（60min）"
+        - "确定 Sprint 目标（30min）"
+        - "任务分解和认领（60min）"
+        - "承诺和目标设定（30min）"
+      
+      rules:
+        - "只承诺能完成的工作量"
+        - "任务粒度 < 1 天"
+        - "所有人对目标达成共识"
+    
+    - phase: daily-standup
+      name: 每日站会
+      duration: "15 minutes"
+      frequency: daily
+      timing: "每天固定时间（建议上午）"
+      participants: [all-developers]
+      facilitator: scrum-master
+      
+      format:
+        - "昨天完成了什么"
+        - "今天计划做什么"
+        - "遇到什么阻碍"
+      
+      rules:
+        - "准时开始，不超过 15 分钟"
+        - "不讨论细节，问题会后单独沟通"
+        - "所有人站立开会"
+        - "记录阻碍项并跟进解决"
+    
+    - phase: development
+      name: 开发执行
+      duration: "ongoing"
+      practices:
+        - "结对编程（可选，推荐复杂功能使用）"
+        - "持续集成（代码提交即触发）"
+        - "测试驱动开发（推荐）"
+        - "代码审查（合并前必须）"
+        - "在制品限制（WIP Limit）"
+      
+      tools:
+        - "任务板（Jira/Trello/飞书项目）"
+        - "代码仓库（GitHub/GitLab）"
+        - "CI/CD流水线"
+    
+    - phase: sprint-review
+      name: 冲刺评审会
+      duration: "2 hours"
+      timing: "Sprint 最后一天"
+      participants: [all-developers, stakeholders]
+      facilitator: product-manager
+      
+      agenda:
+        - "演示完成的功能（60min）"
+        - "收集反馈（30min）"
+        - "讨论下一步方向（30min）"
+      
+      rules:
+        - "只演示完成的功能（符合 DoD）"
+        - "鼓励真实用户参与"
+        - "记录反馈并更新 Backlog"
+    
+    - phase: sprint-retrospective
+      name: 冲刺回顾会
+      duration: "90 minutes"
+      timing: "Sprint 结束后，下一个 Sprint 开始前"
+      participants: [all-developers]
+      facilitator: scrum-master
+      
+      format:
+        - "哪些做得好，继续保持"
+        - "哪些需要改进"
+        - "制定改进行动计划"
+      
+      rules:
+        - "对事不对人"
+        - "聚焦可执行的改进"
+        - "每次至少 1 个改进行动"
+        - "下次回顾会检查执行情况"
+
+# 工件模板
+artifacts:
+  - name: 用户故事卡片
+    template: |
+      ## 作为 [角色]
+      我想要 [做某事]
+      以便于 [达成某个价值]
+      
+      ### 验收标准 (Acceptance Criteria)
+      - [ ] 标准 1
+      - [ ] 标准 2
+      - [ ] 标准 3
+    
+    example: |
+      ## 作为 电商用户
+      我想要 将商品加入购物车
+      以便于 统一结算
+      
+      ### 验收标准
+      - [ ] 点击"加入购物车"按钮后，购物车图标显示数量 +1
+      - [ ] 可以在购物车页面查看已添加的商品
+      - [ ] 可以修改商品数量或删除商品
+      - [ ] 关闭页面后再打开，购物车数据保留
+  
+  - name: 任务板
+    columns:
+      - "Backlog"
+      - "To Do"
+      - "In Progress"
+      - "Code Review"
+      - "Testing"
+      - "Done"
+    
+    wipLimits:
+      "In Progress": "每人最多 2 个任务"
+      "Code Review": "每个 reviewer 最多 3 个待审查"
+    
+    rules:
+      - "任务从左到右流动"
+      - "遵守 WIP 限制"
+      - "阻塞任务贴红色标记"
+  
+  - name: 完成的定义 (DoD)
+    checklist:
+      - "代码已完成并通过单元测试"
+      - "代码已审查并合并"
+      - "功能已通过测试（无 P0/P1 Bug）"
+      - "文档已更新（如需要）"
+      - "Product Owner 已验收"
+
+# 度量指标
+metrics:
+  - name: 速度（Velocity）
+    formula: "每个 Sprint 完成的 Story Points 总和"
+    purpose: "预测团队交付能力"
+    target: "稳定而非增长"
+    tracking: "绘制 Velocity 趋势图"
+  
+  - name: 周期时间（Cycle Time）
+    formula: "从 In Progress 到 Done 的平均时间"
+    purpose: "识别流程瓶颈"
+    target: "< 3 days per story"
+    tracking: "绘制 Cycle Time 趋势图"
+  
+  - name: 燃尽图（Burndown Chart）
+    purpose: "跟踪 Sprint 进度"
+    ideal: "线性下降到 0"
+    tracking: "每日更新剩余工作量"
+  
+  - name: 团队满意度
+    method: "回顾会投票（1-5 分）"
+    purpose: "监控团队健康度"
+    target: "> 4 分"
+  
+  - name: 代码质量
+    metrics:
+      - "Bug 数量趋势"
+      - "测试覆盖率"
+      - "代码审查通过率"
+      - "技术债务数量"
+
+# 成功要素
+successFactors:
+  - "Product Owner 充分授权和参与"
+  - "团队稳定，跨职能协作"
+  - "固定的 Sprint 节奏"
+  - "透明的沟通和反馈"
+  - "持续改进的文化"
+
+# 常见陷阱
+pitfalls:
+  - problem: "Sprint 中频繁插入紧急任务"
+    solution: "设立缓冲时间，紧急任务走特殊流程"
+  
+  - problem: "站会变成详细汇报"
+    solution: "严格计时，细节会后讨论"
+  
+  - problem: "回顾会流于形式"
+    solution: "轮流主持，引入新游戏，跟进改进行动"
+  
+  - problem: "估算过于乐观"
+    solution: "参考历史 Velocity，考虑风险缓冲"

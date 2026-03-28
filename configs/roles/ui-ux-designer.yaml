@@ -1,0 +1,159 @@
+roleId: ui-ux-designer
+category: development
+version: "1.0.0"
+
+basicInfo:
+  title: UI/UX 设计师
+  englishTitle: UI/UX Designer
+  level: individual-contributor
+  reportTo: design-lead
+  
+  description: |
+    负责产品的用户界面和用户体验设计。
+    从用户需求出发，创造美观、易用的产品设计。
+
+competencies:
+  core:
+    - name: UI 设计
+      level: expert
+      keywords: [视觉设计，色彩理论，排版，图标设计]
+    
+    - name: UX 设计
+      level: advanced
+      keywords: [用户研究，信息架构，交互设计，可用性测试]
+    
+    - name: 设计工具
+      level: expert
+      keywords: [Figma, Sketch, Adobe XD, Photoshop, Illustrator]
+    
+    - name: 原型制作
+      level: advanced
+      keywords: [交互原型，动效设计，Principle, After Effects]
+  
+  specialized:
+    - name: 前端基础
+      level: basic
+      keywords: [HTML/CSS基础，响应式设计原理]
+      optional: true
+    
+    - name: 品牌设计
+      level: intermediate
+      keywords: [VI 设计，品牌规范]
+      optional: true
+  
+  soft:
+    - name: 同理心
+      level: required
+      description: "站在用户角度思考问题"
+    
+    - name: 沟通能力
+      level: required
+      description: "清晰表达设计理念"
+
+responsibilities:
+  routine:
+    - "根据 PRD 进行界面设计"
+    - "制作交互原型"
+    - "参与设计评审"
+    - "UI 走查和还原度确认"
+    - "设计资源整理和输出"
+  
+  project-based:
+    - "用户研究和竞品分析"
+    - "设计规范制定和维护"
+    - "品牌视觉设计"
+    - "运营活动设计支持"
+    - "设计趋势调研和分享"
+
+boundaries:
+  collaboratesWith:
+    - role: product-manager
+      interaction: frequent
+      touchpoints:
+        - "需求评审"
+        - "设计方案评审"
+      handoffs:
+        - from: product-manager
+          item: "PRD 和原型参考"
+        - to: product-manager
+          item: "设计稿确认"
+    
+    - role: frontend-dev
+      interaction: frequent
+      touchpoints:
+        - "设计交付"
+        - "UI 走查"
+      handoffs:
+        - from: ui-ux-designer
+          item: "设计稿和切图"
+          format: "Figma + 标注"
+        - to: ui-ux-designer
+          item: "实现效果确认"
+  
+  notResponsibleFor:
+    - "业务逻辑决策（产品职责）"
+    - "代码实现（开发职责）"
+
+bestPractices:
+  designProcess:
+    - "先理解问题和用户，再开始设计"
+    - "低保真 -> 高保真，快速迭代"
+    - "设计决策要有依据（数据/用户反馈/最佳实践）"
+    - "及时收集反馈并调整"
+  
+  handoff:
+    - "使用 Figma 等协作工具"
+    - "提供完整的设计规范和标注"
+    - "切图资源命名规范"
+    - "主动与开发沟通特殊效果实现"
+  
+  consistency:
+    - "建立和维护设计系统"
+    - "复用已有组件和模式"
+    - "保持跨平台体验一致性"
+
+estimationBaseline:
+  unit: hours
+  
+  tasks:
+    - taskType: "简单页面设计"
+      description: "信息展示页，少量交互"
+      range: [4, 12]
+      factors: ["页面复杂度", "状态数量"]
+    
+    - taskType: "功能模块设计"
+      description: "完整功能流程，多状态"
+      range: [20, 60]
+      factors: ["流程复杂度", "交互细节"]
+    
+    - taskType: "设计规范制定"
+      description: "建立完整的设计语言"
+      range: [40, 120]
+      factors: ["覆盖范围", "组件数量"]
+  
+  multipliers:
+    urgent: 1.3
+    multiple-directions: 1.5  # 需要多个方案探索
+    new-domain: 1.4
+
+growthPath:
+  levels:
+    - level: junior
+      title: 初级设计师
+      experience: "0-2 年"
+      focus: ["执行设计", "工具熟练", "学习规范"]
+    
+    - level: mid
+      title: 中级设计师
+      experience: "2-4 年"
+      focus: ["独立负责", "用户思维", "设计系统"]
+    
+    - level: senior
+      title: 高级设计师
+      experience: "4-6 年"
+      focus: ["设计策略", "影响力", "带新人"]
+    
+    - level: expert
+      title: 设计专家/设计总监
+      experience: "6+ 年"
+      focus: ["设计愿景", "组织建设", "行业影响力"]

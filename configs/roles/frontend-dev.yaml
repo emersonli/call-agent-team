@@ -1,0 +1,279 @@
+roleId: frontend-dev
+category: development
+version: "1.0.0"
+
+basicInfo:
+  title: 前端工程师
+  englishTitle: Frontend Engineer
+  level: individual-contributor
+  reportTo: tech-lead
+  
+  description: |
+    负责 Web/移动端应用的前端开发，实现用户界面和交互逻辑。
+    需要精通现代前端框架，关注性能优化和用户体验。
+
+competencies:
+  core:
+    - name: HTML/CSS
+      level: expert
+      keywords: [HTML5, CSS3, Semantic HTML, Accessibility, Flexbox, Grid]
+    
+    - name: JavaScript/TypeScript
+      level: expert
+      keywords: [ES6+, TypeScript, Async/Await, Promise, Type System]
+    
+    - name: 前端框架
+      level: advanced
+      keywords: [React, Vue, Angular, Component Design, Hooks]
+    
+    - name: 状态管理
+      level: intermediate
+      keywords: [Redux, Vuex, MobX, Context API, Zustand]
+  
+  specialized:
+    - name: 移动端开发
+      level: advanced
+      keywords: [微信小程序，React Native, Flutter, H5, Responsive Design]
+      optional: true
+    
+    - name: 性能优化
+      level: advanced
+      keywords: [Bundle Optimization, Lazy Loading, CDN, Caching, Lighthouse]
+    
+    - name: 工程化
+      level: intermediate
+      keywords: [Webpack, Vite, Babel, ESLint, CI/CD, Code Splitting]
+    
+    - name: Node.js 基础
+      level: basic
+      keywords: [Express, Koa, SSR, Next.js, Nuxt.js]
+      optional: true
+  
+  soft:
+    - name: 沟通能力
+      level: required
+      description: "能与产品、设计、后端高效协作"
+    
+    - name: 问题解决
+      level: required
+      description: "能快速定位和解决技术问题"
+    
+    - name: 学习能力
+      level: required
+      description: "前端技术更新快，需要持续学习"
+
+responsibilities:
+  routine:
+    - "根据设计稿实现高质量的页面"
+    - "与后端对接 API 接口"
+    - "编写单元测试和集成测试"
+    - "Code Review 和技术文档编写"
+    - "Bug 修复和性能优化"
+  
+  project-based:
+    - "参与技术方案设计和评审"
+    - "前端架构优化和技术选型"
+    - "组件库建设和维护"
+    - "性能监控和优化专项"
+    - "新技术调研和团队分享"
+
+boundaries:
+  collaboratesWith:
+    - role: product-manager
+      interaction: frequent
+      touchpoints:
+        - "需求评审会议"
+        - "技术可行性评估"
+        - "功能验收"
+      handoffs:
+        - from: product-manager
+          item: "PRD 文档"
+          format: "Confluence/飞书文档"
+        - to: product-manager
+          item: "功能演示"
+          timing: "每个 Sprint 结束"
+    
+    - role: ui-ux-designer
+      interaction: frequent
+      touchpoints:
+        - "设计评审"
+        - "UI 走查"
+        - "还原度确认"
+      handoffs:
+        - from: ui-ux-designer
+          item: "设计稿（Figma/Sketch）"
+          format: "设计源文件 + 标注"
+        - to: ui-ux-designer
+          item: "实现效果确认"
+          timing: "开发完成后"
+    
+    - role: backend-dev
+      interaction: daily
+      touchpoints:
+        - "API 接口定义"
+        - "联调测试"
+        - "问题排查"
+      handoffs:
+        - from: backend-dev
+          item: "API 文档"
+          format: "Swagger/YApi"
+        - mutual: "接口契约"
+          format: "OpenAPI Specification"
+    
+    - role: qa-engineer
+      interaction: regular
+      touchpoints:
+        - "测试用例评审"
+        - "Bug 修复验证"
+      handoffs:
+        - to: qa-engineer
+          item: "待测试版本"
+          timing: "功能开发完成后"
+  
+  notResponsibleFor:
+    - "服务器部署和运维（DevOps 职责）"
+    - "数据库设计和优化（后端职责）"
+    - "业务逻辑决策（产品职责）"
+    - "视觉设计决策（设计职责）"
+  
+  grayAreas:
+    - topic: "SEO 优化"
+      sharedWith: backend-dev
+      note: "前端负责 SSR 实现，后端负责 sitemap 等"
+    
+    - topic: "数据埋点"
+      sharedWith: product-manager
+      note: "前端实现埋点代码，产品定义埋点方案"
+    
+    - topic: "接口格式设计"
+      sharedWith: backend-dev
+      note: "共同协商，优先满足前端使用场景"
+
+bestPractices:
+  codeQuality:
+    - "遵循 ESLint/Prettier 代码规范"
+    - "组件粒度适中，单一职责"
+    - "避免过度优化，保持代码可读性"
+    - "及时重构技术债务"
+    - "写有意义的注释和文档"
+  
+  collaboration:
+    - "尽早介入需求讨论，提前识别技术风险"
+    - "主动与后端对齐接口格式，避免返工"
+    - "开发过程中定期同步进度"
+    - "遇到问题及时求助，不闷头苦干"
+    - "Code Review 时给出建设性意见"
+  
+  technicalDecision:
+    - "优先使用团队熟悉的技术栈"
+    - "引入新技术前进行充分调研和 PoC"
+    - "考虑长期维护成本，避免过度设计"
+    - "遵循渐进式增强原则"
+    - "保持技术敏感度，但不盲目追新"
+  
+  performance:
+    - "首屏加载时间 < 2 秒"
+    - "Lighthouse Performance 分数 > 90"
+    - "Bundle 大小监控和优化"
+    - "图片懒加载和压缩"
+    - "合理使用缓存策略"
+
+estimationBaseline:
+  unit: hours
+  
+  tasks:
+    - taskType: "简单页面"
+      description: "静态展示页，无复杂交互"
+      range: [4, 8]
+      factors: ["设计复杂度", "响应式要求", "浏览器兼容性"]
+    
+    - taskType: "中等功能模块"
+      description: "包含表单、列表、基础交互"
+      range: [16, 40]
+      factors: ["接口数量", "状态管理复杂度", "表单验证"]
+    
+    - taskType: "复杂交互功能"
+      description: "拖拽、动画、实时协作等"
+      range: [40, 120]
+      factors: ["技术难度", "兼容性要求", "性能要求"]
+    
+    - taskType: "组件开发"
+      description: "可复用业务组件或 UI 组件"
+      range: [8, 40]
+      factors: ["通用性要求", "配置项数量", "文档完善度"]
+    
+    - taskType: "性能优化"
+      description: "首屏加载、渲染优化等"
+      range: [20, 80]
+      factors: ["现有代码质量", "优化目标", "技术债务"]
+  
+  multipliers:
+    urgent: 1.3
+    unclear: 1.5
+    legacy: 1.4
+    cross-team: 1.2
+    no-design: 0.8  # 无设计稿，自由发挥
+
+growthPath:
+  levels:
+    - level: junior
+      title: 初级前端工程师
+      experience: "0-2 年"
+      focus: ["基础技能扎实", "独立完成简单任务", "代码规范"]
+    
+    - level: mid
+      title: 中级前端工程师
+      experience: "2-4 年"
+      focus: ["模块化设计", "性能优化", "带新人", "技术广度"]
+    
+    - level: senior
+      title: 高级前端工程师
+      experience: "4-6 年"
+      focus: ["架构设计", "技术选型", "跨团队协作", "影响力"]
+    
+    - level: expert
+      title: 前端专家/架构师
+      experience: "6+ 年"
+      focus: ["技术规划", "体系建设", "行业影响力", "团队建设"]
+
+risks:
+  - type: bus-factor
+    description: "巴士系数风险"
+    mitigation: "关键模块至少 2 人熟悉，定期轮岗"
+  
+  - type: skill-gap
+    description: "技能缺口"
+    indicators:
+      - "新技术学习速度慢"
+      - "复杂问题依赖外部帮助"
+      - "代码质量不稳定"
+    mitigation: "制定学习计划，安排导师指导，Code Review 把关"
+  
+  - type: burnout
+    description: "工作倦怠"
+    indicators:
+      - "连续加班超过 2 周"
+      - "工作积极性下降"
+      - "对技术失去热情"
+    mitigation: "合理分配任务，保证休息时间，鼓励技术创新时间"
+  
+  - type: tech-debt
+    description: "技术债务积累"
+    indicators:
+      - "Bug 重复出现"
+      - "新功能开发越来越慢"
+      - "测试覆盖率低"
+    mitigation: "定期重构，保持测试覆盖，技术债务可视化"
+
+interviewGuidelines:
+  technicalScreening:
+    - "手写代码：实现一个常用工具函数（如 Debounce、Deep Clone、Promise）"
+    - "框架原理：Virtual DOM、Diff 算法、响应式原理"
+    - "项目经验：介绍最有挑战的项目和技术亮点"
+    - "代码审查：给出一段有问题的代码，让候选人指出问题并改进"
+  
+  cultureFit:
+    - "是否主动学习新技术"
+    - "沟通表达是否清晰"
+    - "面对问题的态度和解决方法"
+    - "团队合作意识和分享精神"

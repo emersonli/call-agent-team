@@ -1,0 +1,151 @@
+roleId: devops-engineer
+category: development
+version: "1.0.0"
+
+basicInfo:
+  title: 运维工程师
+  englishTitle: DevOps Engineer
+  level: individual-contributor
+  reportTo: infra-lead
+  
+  description: |
+    负责基础设施、CI/CD、监控和系统稳定性。
+    保障服务高可用，提升研发效率和运维质量。
+
+competencies:
+  core:
+    - name: Linux 系统
+      level: expert
+      keywords: [系统管理，Shell 脚本，性能调优]
+    
+    - name: 容器化
+      level: advanced
+      keywords: [Docker, Kubernetes, Helm]
+    
+    - name: CI/CD
+      level: advanced
+      keywords: [Jenkins, GitLab CI, GitHub Actions]
+    
+    - name: 云服务
+      level: advanced
+      keywords: [AWS, 阿里云，腾讯云，K8s 服务]
+  
+  specialized:
+    - name: 监控告警
+      level: advanced
+      keywords: [Prometheus, Grafana, ELK, Zabbix]
+    
+    - name: 自动化运维
+      level: intermediate
+      keywords: [Ansible, Terraform, SaltStack]
+    
+    - name: 安全
+      level: intermediate
+      keywords: [网络安全，防火墙，漏洞修复]
+  
+  soft:
+    - name: 应急响应
+      level: required
+      description: "快速定位和解决线上问题"
+    
+    - name: 服务意识
+      level: required
+      description: "为研发团队提供高效支持"
+
+responsibilities:
+  routine:
+    - "监控系统运行状态"
+    - "处理告警和故障"
+    - "维护 CI/CD流水线"
+    - "资源管理和优化"
+    - "编写运维文档"
+  
+  project-based:
+    - "架构设计和容量规划"
+    - "自动化运维工具开发"
+    - "性能优化和成本控制"
+    - "安全加固和合规"
+    - "新技术调研和引入"
+
+boundaries:
+  collaboratesWith:
+    - role: backend-dev
+      interaction: frequent
+      touchpoints:
+        - "部署流程设计"
+        - "故障排查"
+      handoffs:
+        - from: backend-dev
+          item: "部署包和文档"
+        - to: backend-dev
+          item: "运行环境"
+    
+    - role: qa-engineer
+      interaction: regular
+      touchpoints:
+        - "测试环境准备"
+        - "压测支持"
+  
+  notResponsibleFor:
+    - "业务代码开发（开发职责）"
+    - "功能测试（测试职责）"
+
+bestPractices:
+  infrastructure:
+    - "基础设施即代码（IaC）"
+    - "自动化一切可自动化的"
+    - "多环境隔离（dev/test/prod）"
+    - "定期备份和恢复演练"
+  
+  monitoring:
+    - "关键指标全覆盖"
+    - "告警分级，避免告警疲劳"
+    - "建立 on-call 轮值制度"
+    - "故障复盘和改进"
+  
+  security:
+    - "最小权限原则"
+    - "定期更新和补丁"
+    - "安全扫描常态化"
+    - "访问日志审计"
+
+estimationBaseline:
+  unit: hours
+  
+  tasks:
+    - taskType: "环境搭建"
+      description: "新应用部署环境准备"
+      range: [8, 40]
+      factors: ["复杂度", "自动化程度"]
+    
+    - taskType: "CI/CD流水线"
+      description: "构建部署流程配置"
+      range: [8, 24]
+      factors: ["集成工具数量", "审批流程"]
+    
+    - taskType: "监控体系"
+      description: "监控告警配置"
+      range: [20, 80]
+      factors: ["监控指标数量", "告警规则"]
+  
+  multipliers:
+    urgent: 1.5
+    legacy-system: 1.3
+    high-availability: 1.4
+
+growthPath:
+  levels:
+    - level: junior
+      title: 初级运维工程师
+      experience: "0-2 年"
+      focus: ["基础运维", "故障处理", "脚本编写"]
+    
+    - level: mid
+      title: 中级运维工程师
+      experience: "2-4 年"
+      focus: ["自动化", "架构优化", "独立负责"]
+    
+    - level: senior
+      title: 高级运维/SRE
+      experience: "4-6 年"
+      focus: ["体系建设", "稳定性工程", "带团队"]

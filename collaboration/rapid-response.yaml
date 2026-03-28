@@ -1,0 +1,195 @@
+modeId: rapid-response
+name: 快速响应模式
+version: "1.0.0"
+category: fast-delivery
+
+description: |
+  适用于紧急项目或 MVP 快速验证的协作模式。
+  通过简化流程、并行工作、快速决策实现极速交付。
+
+applicableScenarios:
+  - "紧急项目（<2 周交付）"
+  - "MVP 快速验证"
+  - "黑客松项目"
+  - "危机公关需求"
+  - "市场机会窗口短暂"
+
+notSuitableFor:
+  - "大型复杂系统"
+  - "高可靠性要求系统"
+  - "长期维护项目"
+
+teamSize:
+  recommended: [2, 5]
+  optimal: 3
+  note: "小团队，多面手，快速决策"
+
+# 核心原则
+principles:
+  - "速度优先，完美靠后"
+  - "先上线，再优化"
+  - "每日交付可见成果"
+  - "问题不过夜"
+  - "决策扁平化"
+
+# 角色与职责
+roles:
+  - role: product-manager
+    responsibilities:
+      - "快速定义 MVP 范围"
+      - "现场即时决策"
+      - "优先级动态调整"
+    timeCommitment: 1.0
+  
+  - role: tech-lead
+    responsibilities:
+      - "技术方案快速设计"
+      - "代码审查和合并"
+      - "解决技术难题"
+    timeCommitment: 1.0
+  
+  - role: full-stack-dev
+    responsibilities:
+      - "前后端开发"
+      - "快速迭代"
+      - "自主测试"
+    timeCommitment: 1.0
+
+# 工作流程
+workflow:
+  phases:
+    - phase: kickoff
+      name: "项目启动"
+      duration: "2-4 hours"
+      timing: "Day 1 上午"
+      participants: [all-members]
+      
+      agenda:
+        - "明确目标和成功标准（30min）"
+        - "确定 MVP 功能列表（60min）"
+        - "技术方案快速设计（60min）"
+        - "任务分工和时间表（30min）"
+      
+      outputs:
+        - "MVP 功能清单（按优先级排序）"
+        - "技术架构图（草图即可）"
+        - "时间表和里程碑"
+    
+    - phase: daily-cycle
+      name: "日循环开发"
+      duration: "ongoing"
+      frequency: daily
+      
+      schedule:
+        - time: "09:00-09:15"
+          activity: "站会同步今日目标"
+        - time: "09:15-12:00"
+          activity: "专注开发"
+        - time: "12:00-13:00"
+          activity: "午餐休息"
+        - time: "13:00-18:00"
+          activity: "专注开发 + 即时沟通"
+        - time: "18:00-18:30"
+          activity: "代码合并和当日演示"
+        - time: "18:30-19:00"
+          activity: "明日计划调整"
+      
+      rules:
+        - "问题立即提出，15 分钟内响应"
+        - "代码随时提交，每日至少一次合并"
+        - "每晚必须有可演示的成果"
+    
+    - phase: demo-deploy
+      name: "演示部署"
+      duration: "2-4 hours"
+      timing: "最后一日"
+      
+      activities:
+        - "完整功能演示"
+        - "用户验收测试"
+        - "生产环境部署"
+        - "监控配置"
+      
+      outputs:
+        - "可运行的产品"
+        - "用户使用说明"
+        - "后续优化建议"
+
+# 沟通机制
+communication:
+  - channel: "即时通讯群"
+    purpose: "日常沟通和快速响应"
+    responseTime: "< 15 minutes"
+  
+  - channel: "站会"
+    purpose: "同步进度和障碍"
+    duration: "15 minutes"
+  
+  - channel: "晚间演示"
+    purpose: "展示成果和调整方向"
+    duration: "30 minutes"
+
+# 决策机制
+decisionMaking:
+  - type: "产品决策"
+    decider: "product-manager"
+    process: "即时决定，事后同步"
+  
+  - type: "技术决策"
+    decider: "tech-lead"
+    process: "快速评估，当场决定"
+  
+  - type: "范围变更"
+    decider: "product-manager + tech-lead"
+    process: "评估影响后立即决定"
+
+# 工具推荐
+tools:
+  collaboration:
+    - "飞书/Slack（即时通讯）"
+    - "腾讯会议/Zoom（视频沟通）"
+  
+  development:
+    - "GitHub/GitLab（代码仓库）"
+    - "Vercel/Netlify（快速部署）"
+    - "Figma（快速设计）"
+  
+  project:
+    - "飞书文档（需求记录）"
+    - "白板工具（头脑风暴）"
+
+# 成功要素
+successFactors:
+  - "核心团队全程投入，不被打断"
+  - "Product Manager 有充分决策权"
+  - "技术人员是全栈或多面手"
+  - "基础设施完善（CI/CD就绪）"
+  - "用户/客户可随时反馈"
+
+# 风险提示
+risks:
+  - risk: "技术债务积累"
+    mitigation: "记录债务清单，后续安排重构"
+  
+  - risk: "团队疲劳"
+    mitigation: "控制节奏，保证基本休息"
+  
+  - risk: "质量妥协过度"
+    mitigation: "守住底线：数据安全和核心功能稳定"
+  
+  - risk: "范围蔓延"
+    mitigation: "严格守护 MVP 范围，新增需求放入 Backlog"
+
+# 与敏捷冲刺的对比
+comparison:
+  agile-sprint:
+    sprintLength: "2 周"
+    ceremonyOverhead: "中"
+    documentation: "完整"
+    suitableFor: "常规项目开发"
+  
+  rapid-response:
+    sprintLength: "1 天"
+    ceremonyOverhead: "低"
+    documentation: "最小化"
+    suitableFor: "紧急项目/MVP"

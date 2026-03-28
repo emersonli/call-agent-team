@@ -1,0 +1,237 @@
+roleId: qa-engineer
+category: development
+version: "1.0.0"
+
+basicInfo:
+  title: 测试工程师
+  englishTitle: QA Engineer
+  level: individual-contributor
+  reportTo: qa-lead
+  
+  description: |
+    负责软件质量保障，包括测试计划、用例设计、执行测试和 Bug 跟踪。
+    确保产品质量符合需求，提升用户体验。
+
+competencies:
+  core:
+    - name: 测试理论
+      level: expert
+      keywords: [测试方法，测试流程，缺陷管理，质量模型]
+    
+    - name: 测试用例设计
+      level: expert
+      keywords: [等价类，边界值，场景法，正交实验]
+    
+    - name: 功能测试
+      level: expert
+      keywords: [黑盒测试，回归测试，集成测试]
+    
+    - name: 自动化测试
+      level: advanced
+      keywords: [Selenium, Cypress, Playwright, 单元测试框架]
+  
+  specialized:
+    - name: 性能测试
+      level: intermediate
+      keywords: [JMeter, LoadRunner, 压测，性能分析]
+      optional: true
+    
+    - name: 安全测试
+      level: basic
+      keywords: [OWASP, 漏洞扫描，渗透测试基础]
+      optional: true
+    
+    - name: 持续集成
+      level: intermediate
+      keywords: [Jenkins, GitLab CI, 自动化流水线]
+  
+  soft:
+    - name: 细致耐心
+      level: required
+      description: "不放过任何细节，反复验证"
+    
+    - name: 沟通能力
+      level: required
+      description: "清晰描述 Bug，推动修复"
+    
+    - name: 怀疑精神
+      level: required
+      description: "不轻信表面现象，深入探究"
+
+responsibilities:
+  routine:
+    - "编写测试计划和测试用例"
+    - "执行功能测试和回归测试"
+    - "记录和跟踪 Bug"
+    - "编写自动化测试脚本"
+    - "输出测试报告"
+  
+  project-based:
+    - "参与需求评审，提出可测试性建议"
+    - "制定整体测试策略"
+    - "搭建自动化测试框架"
+    - "性能测试和优化建议"
+    - "质量分析和改进建议"
+
+boundaries:
+  collaboratesWith:
+    - role: product-manager
+      interaction: frequent
+      touchpoints:
+        - "需求评审"
+        - "验收标准确认"
+        - "Bug 优先级确认"
+      handoffs:
+        - from: product-manager
+          item: "PRD 和验收标准"
+        - to: product-manager
+          item: "测试报告和上线建议"
+    
+    - role: frontend-dev
+      interaction: daily
+      touchpoints:
+        - "测试用例评审"
+        - "Bug 修复验证"
+      handoffs:
+        - to: frontend-dev
+          item: "Bug 报告"
+        - from: frontend-dev
+          item: "待测试版本"
+    
+    - role: backend-dev
+      interaction: daily
+      touchpoints:
+        - "接口测试"
+        - "Bug 定位"
+      handoffs:
+        - to: backend-dev
+          item: "接口测试报告"
+        - from: backend-dev
+          item: "修复后的接口"
+  
+  notResponsibleFor:
+    - "代码实现（开发职责）"
+    - "业务决策（产品职责）"
+    - "生产环境运维（运维职责）"
+  
+  grayAreas:
+    - topic: "单元测试"
+      sharedWith: developers
+      note: "开发写单元测试，测试工程师 review 覆盖率"
+    
+    - topic: "线上问题排查"
+      sharedWith: devops-engineer
+      note: "测试复现问题，运维提供日志和监控"
+
+bestPractices:
+  testPlanning:
+    - "尽早介入需求阶段，识别测试风险"
+    - "测试用例覆盖正常流程和异常场景"
+    - "优先级划分：P0/P1/P2，先测核心功能"
+    - "及时更新用例，保持与需求同步"
+  
+  bugReporting:
+    - "标题清晰：[模块] 问题简述"
+    - "步骤详细：1.2.3... 任何人都能复现"
+    - "期望与实际对比明确"
+    - "附上截图、日志、环境信息"
+    - "严重级别评估准确"
+  
+  automation:
+    - "优先自动化重复性高的测试"
+    - "核心业务流程必须自动化"
+    - "保持测试脚本的可维护性"
+    - "定期运行自动化测试 suite"
+  
+  regression:
+    - "建立回归测试用例库"
+    - "每次发版前必须回归"
+    - "关注影响范围，精准回归"
+    - "自动化回归 + 人工探索性测试"
+
+estimationBaseline:
+  unit: hours
+  
+  tasks:
+    - taskType: "简单功能测试"
+      description: "单一功能，逻辑清晰"
+      range: [4, 12]
+      factors: ["用例数量", "回归范围"]
+    
+    - taskType: "中等模块测试"
+      description: "多功能协作，需要联调"
+      range: [20, 60]
+      factors: ["集成复杂度", "测试数据准备"]
+    
+    - taskType: "完整系统测试"
+      description: "端到端测试，全链路验证"
+      range: [80, 200]
+      factors: ["系统规模", "兼容性要求", "性能测试"]
+    
+    - taskType: "自动化脚本开发"
+      description: "编写和维护自动化测试"
+      range: [20, 80]
+      factors: ["覆盖场景数", "脚本复杂度"]
+  
+  multipliers:
+    urgent: 1.3
+    unclear-requirements: 1.5
+    unstable-environment: 1.4
+    manual-only: 1.3  # 无自动化工具
+
+growthPath:
+  levels:
+    - level: junior
+      title: 初级测试工程师
+      experience: "0-2 年"
+      focus: ["执行测试用例", "Bug 报告", "学习业务"]
+    
+    - level: mid
+      title: 中级测试工程师
+      experience: "2-4 年"
+      focus: ["独立负责模块", "用例设计", "自动化入门"]
+    
+    - level: senior
+      title: 高级测试工程师
+      experience: "4-6 年"
+      focus: ["测试策略", "自动化框架", "带新人"]
+    
+    - level: expert
+      title: 测试专家/QA 负责人
+      experience: "6+ 年"
+      focus: ["质量体系", "效能提升", "团队建设"]
+
+risks:
+  - type: late-entry
+    description: "测试介入太晚"
+    indicators:
+      - "开发完成才看需求"
+      - "没有测试设计时间"
+    mitigation: "测试早期介入需求评审，预留测试设计时间"
+  
+  - type: environment-issue
+    description: "测试环境不稳定"
+    indicators:
+      - "频繁部署失败"
+      - "数据被污染"
+    mitigation: "环境隔离，稳定版本标记，数据恢复机制"
+  
+  - type: regression-burnout
+    description: "回归测试疲劳"
+    indicators:
+      - "重复执行相同用例"
+      - "注意力下降，漏测增加"
+    mitigation: "提高自动化覆盖率，轮岗制度"
+
+interviewGuidelines:
+  technicalScreening:
+    - "测试用例设计：给定一个功能，设计测试用例"
+    - "Bug 分析：给出一个 Bug，分析可能原因"
+    - "自动化能力：编写简单的自动化测试脚本"
+    - "项目经验：介绍最有挑战的测试场景"
+  
+  cultureFit:
+    - "是否注重细节"
+    - "沟通表达是否清晰"
+    - "面对开发拒绝修复 Bug 时的处理"
+    - "质量意识和用户视角"

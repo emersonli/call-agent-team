@@ -1,0 +1,373 @@
+teamType: dev-team
+name: 产技研发团队
+version: "1.0.0"
+description: 软件产品开发和技术实施的专业团队，覆盖从需求分析到部署运维的全流程
+
+# 基础角色池（引用 configs/roles/ 目录下的定义）
+rolePool:
+  - roleId: product-manager
+    roleRef: ../roles/product-manager.yaml
+    title: 产品经理
+    minCount: 0
+    maxCount: 3
+    defaultCount: 1
+    baseHourlyRate: 1500
+    
+  - roleId: ui-ux-designer
+    roleRef: ../roles/ui-ux-designer.yaml
+    title: UI/UX 设计师
+    minCount: 0
+    maxCount: 3
+    defaultCount: 1
+    baseHourlyRate: 1200
+    
+  - roleId: frontend-dev
+    roleRef: ../roles/frontend-dev.yaml
+    title: 前端工程师
+    minCount: 0
+    maxCount: 8
+    defaultCount: 2
+    baseHourlyRate: 1200
+    
+  - roleId: backend-dev
+    roleRef: ../roles/backend-dev.yaml
+    title: 后端工程师
+    minCount: 0
+    maxCount: 8
+    defaultCount: 2
+    baseHourlyRate: 1200
+    
+  - roleId: qa-engineer
+    roleRef: ../roles/qa-engineer.yaml
+    title: 测试工程师
+    minCount: 0
+    maxCount: 4
+    defaultCount: 1
+    baseHourlyRate: 900
+    
+  - roleId: devops-engineer
+    roleRef: ../roles/devops-engineer.yaml
+    title: 运维工程师
+    minCount: 0
+    maxCount: 2
+    defaultCount: 0
+    baseHourlyRate: 1300
+
+# 场景化团队配方
+scenarios:
+  - scenarioId: mvp-development
+    name: MVP 快速开发
+    description: 最小可行产品，快速验证想法，适合创业初期或新功能试水
+    complexity: simple
+    duration: "2-4 weeks"
+    budgetRange: [50000, 150000]
+    
+    phases:
+      - name: 需求分析与 PRD
+        duration: "3-5 days"
+        completionCriteria: "PRD 文档确认，原型图定稿"
+        roles:
+          - roleId: product-manager
+            count: 1
+            allocation: 1.0
+            keyDeliverables: ["PRD 文档", "产品原型", "用户故事地图"]
+    
+      - name: 设计与开发
+        duration: "2-3 weeks"
+        completionCriteria: "核心功能开发完成，UI 实现"
+        roles:
+          - roleId: product-manager
+            count: 1
+            allocation: 0.3
+            keyDeliverables: ["需求澄清", "验收测试"]
+          - roleId: ui-ux-designer
+            count: 1
+            allocation: 0.5
+            keyDeliverables: ["UI 设计稿", "交互规范"]
+          - roleId: frontend-dev
+            count: 1
+            allocation: 1.0
+            keyDeliverables: ["前端页面", "交互实现"]
+          - roleId: backend-dev
+            count: 1
+            allocation: 1.0
+            keyDeliverables: ["API 开发", "数据库设计"]
+    
+      - name: 测试与上线
+        duration: "3-5 days"
+        completionCriteria: "Bug 修复，生产环境部署"
+        roles:
+          - roleId: qa-engineer
+            count: 1
+            allocation: 1.0
+            keyDeliverables: ["测试报告", "Bug 列表"]
+          - roleId: backend-dev
+            count: 1
+            allocation: 0.5
+            keyDeliverables: ["部署脚本", "监控配置"]
+    
+    recommendedCollaboration:
+      - modeRef: ../collaboration/rapid-response.yaml
+        phase: kickoff
+      - modeRef: ../collaboration/agile-sprint.yaml
+        phase: development
+  
+  - scenarioId: full-stack-app
+    name: 完整应用开发
+    description: 功能完整的商业级应用，适合正式产品发布
+    complexity: complex
+    duration: "2-3 months"
+    budgetRange: [200000, 500000]
+    
+    phases:
+      - name: 需求分析与规划
+        duration: "1-2 weeks"
+        completionCriteria: "PRD 评审通过，技术方案确定"
+        roles:
+          - roleId: product-manager
+            count: 1
+            allocation: 1.0
+            keyDeliverables: 
+              - "市场需求文档 (MRD)"
+              - "产品需求文档 (PRD)"
+              - "用户故事和验收标准"
+              - "产品原型（Axure/Figma）"
+    
+      - name: UI/UX 设计
+        duration: "2-3 weeks"
+        completionCriteria: "设计稿评审通过，切图完成"
+        roles:
+          - roleId: product-manager
+            count: 1
+            allocation: 0.3
+            keyDeliverables: ["设计需求说明", "设计评审"]
+          - roleId: ui-ux-designer
+            count: 1
+            allocation: 1.0
+            keyDeliverables:
+              - "视觉设计规范"
+              - "完整页面设计稿"
+              - "交互原型"
+              - "图标和切图资源"
+    
+      - name: 迭代开发（2-3 个 Sprint）
+        duration: "6-10 weeks"
+        completionCriteria: "所有功能开发完成，单元测试通过"
+        iterations:
+          - sprint: 1
+            focus: "核心功能 + 基础架构"
+            duration: "2-3 weeks"
+          - sprint: 2
+            focus: "完整功能 + 集成"
+            duration: "2-3 weeks"
+          - sprint: 3
+            focus: "优化 + 扫尾"
+            duration: "2-3 weeks"
+        roles:
+          - roleId: product-manager
+            count: 1
+            allocation: 0.5
+            keyDeliverables: ["需求澄清", "Sprint 验收"]
+          - roleId: frontend-dev
+            count: 2
+            allocation: 1.0
+            specialization:
+              - senior: {count: 1, focus: ["架构设计", "核心模块", "代码审查"]}
+              - mid: {count: 1, focus: ["页面开发", "接口对接"]}
+            keyDeliverables:
+              - "前端代码（含单元测试）"
+              - "组件文档"
+              - "性能优化报告"
+          - roleId: backend-dev
+            count: 2
+            allocation: 1.0
+            specialization:
+              - architect: {count: 1, focus: ["系统设计", "数据库设计", "API 规范"]}
+              - developer: {count: 1, focus: ["业务逻辑", "接口实现"]}
+            keyDeliverables:
+              - "后端代码（含单元测试）"
+              - "API 文档（Swagger）"
+              - "数据库设计文档"
+          - roleId: qa-engineer
+            count: 1
+            allocation: 0.5
+            entryPoint: "Sprint 1 中期"
+            keyDeliverables:
+              - "测试计划和用例"
+              - "自动化测试脚本"
+              - "阶段性测试报告"
+    
+      - name: 系统测试与修复
+        duration: "1-2 weeks"
+        completionCriteria: "严重 Bug 清零，性能达标"
+        roles:
+          - roleId: qa-engineer
+            count: 1
+            allocation: 1.0
+            keyDeliverables:
+              - "系统集成测试报告"
+              - "性能测试报告"
+              - "安全测试报告"
+              - "Bug 跟踪报告"
+          - roleId: frontend-dev
+            count: 2
+            allocation: 0.5
+            keyDeliverables: ["Bug 修复", "性能优化"]
+          - roleId: backend-dev
+            count: 2
+            allocation: 0.5
+            keyDeliverables: ["Bug 修复", "性能优化"]
+    
+      - name: 部署上线
+        duration: "3-5 days"
+        completionCriteria: "生产环境稳定运行，监控就绪"
+        roles:
+          - roleId: devops-engineer
+            count: 1
+            allocation: 1.0
+            keyDeliverables:
+              - "CI/CD流水线"
+              - "生产环境配置"
+              - "监控告警体系"
+              - "运维手册"
+          - roleId: backend-dev
+            count: 1
+            allocation: 0.5
+            keyDeliverables: ["部署脚本", "数据迁移"]
+          - roleId: qa-engineer
+            count: 1
+            allocation: 0.5
+            keyDeliverables: ["线上验证", "回归测试"]
+    
+    recommendedCollaboration:
+      - modeRef: ../collaboration/agile-sprint.yaml
+        phase: development
+        sprintLength: "2 weeks"
+      - modeRef: ../collaboration/review-approval.yaml
+        phase: milestone-review
+  
+  - scenarioId: enterprise-system
+    name: 企业级系统开发
+    description: 大型复杂系统，多模块协作，高并发高可用要求
+    complexity: very_complex
+    duration: "3-6 months"
+    budgetRange: [500000, 2000000]
+    
+    phases:
+      - name: 需求调研与规划
+        duration: "2-4 weeks"
+        roles:
+          - roleId: product-manager
+            count: 2
+            allocation: 1.0
+            specialization:
+              - lead: {focus: "整体规划 + 核心模块"}
+              - module: {focus: "子模块需求"}
+    
+      - name: 架构设计与技术选型
+        duration: "2-3 weeks"
+        roles:
+          - roleId: backend-dev
+            count: 2
+            allocation: 1.0
+            level: senior-plus
+            keyDeliverables:
+              - "系统架构设计文档"
+              - "技术选型报告"
+              - "PoC 验证"
+    
+      - name: 分阶段开发（3-5 个迭代）
+        duration: "10-20 weeks"
+        roles:
+          - roleId: product-manager
+            count: 2
+            allocation: 1.0
+          - roleId: ui-ux-designer
+            count: 2
+            allocation: 1.0
+          - roleId: frontend-dev
+            count: 4
+            allocation: 1.0
+          - roleId: backend-dev
+            count: 4
+            allocation: 1.0
+          - roleId: qa-engineer
+            count: 2
+            allocation: 1.0
+          - roleId: devops-engineer
+            count: 1
+            allocation: 0.5
+    
+      - name: 性能优化与安全加固
+        duration: "2-3 weeks"
+        roles:
+          - roleId: backend-dev
+            count: 2
+            allocation: 1.0
+            focus: ["性能调优", "安全加固"]
+          - roleId: qa-engineer
+            count: 2
+            allocation: 1.0
+            focus: ["压力测试", "安全测试"]
+    
+      - name: 灰度发布与全量上线
+        duration: "1-2 weeks"
+        roles:
+          - roleId: devops-engineer
+            count: 1
+            allocation: 1.0
+          - roleId: backend-dev
+            count: 2
+            allocation: 0.5
+          - roleId: qa-engineer
+            count: 1
+            allocation: 1.0
+    
+    recommendedCollaboration:
+      - modeRef: ../collaboration/agile-sprint.yaml
+        phase: development
+      - modeRef: ../collaboration/parallel-work.yaml
+        phase: multi-team-coordination
+
+# 约束条件与调整规则
+constraints:
+  budget:
+    minProjectBudget: 50000
+    currency: CNY
+    adjustmentRules:
+      - condition: "budget < estimated * 0.7"
+        action: "warn_and_reduce_scope"
+        message: "预算不足，建议缩减功能范围或延长工期"
+      - condition: "budget > estimated * 1.5"
+        action: "enhance_quality"
+        message: "预算充足，可增加测试投入或技术预研"
+  
+  time:
+    rushProjectMultiplier: 1.5  # 加急项目人力增加 50%
+    minimumLeadTime: "1 week"
+    maximumParallelWork: 3  # 最多 3 个角色并行
+  
+  quality:
+    mandatoryRoles:
+      complex: [qa-engineer]
+      very_complex: [qa-engineer, devops-engineer]
+    codeReviewRequired: true
+    testCoverageMin: 0.7  # 测试覆盖率最低 70%
+  
+  risk:
+    singlePointOfFailure:
+      warning: true
+      mitigation: "关键模块至少 2 人熟悉"
+    knowledgeTransfer:
+      required: true
+      format: ["文档", "代码审查", "结对编程"]
+
+# 扩展点
+extensions:
+  customRoles: []
+  overrideRules: []
+  integrations:
+    projectManagement: ["Jira", "Trello", "飞书项目"]
+    documentation: ["Confluence", "飞书文档", "Notion"]
+    codeRepository: ["GitHub", "GitLab", "Gitee"]
+    ciCd: ["Jenkins", "GitHub Actions", "GitLab CI"]
