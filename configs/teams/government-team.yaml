@@ -1,0 +1,355 @@
+teamType: government-team
+name: 三省六部制政府团队
+version: "1.0.0"
+description: |
+  基于中国古代三省六部制的政府组织模式，适用于政府决策、政策制定、行政管理等场景。
+  三省分工明确：中书省决策起草、门下省审议封驳、尚书省执行，六部分管具体事务。
+
+# 组织架构
+organizationalStructure:
+  # 三省 - 决策层
+  provinces:
+    - provinceId: zhongshu-province
+      name: 中书省
+      role: decision-drafting
+      description: "决策起草机构，负责草拟诏令、策划国家大事"
+      modernEquivalent: "政策研究室 + 国务院办公厅"
+      
+    - provinceId: menxia-province
+      name: 门下省
+      role: review-and-veto
+      description: "审议封驳机构，负责审核诏令、提出异议"
+      modernEquivalent: "全国人大法工委 + 审计署"
+      
+    - provinceId: shangshu-province
+      name: 尚书省
+      role: execution
+      description: "最高执行机构，统领六部实施政令"
+      modernEquivalent: "国务院 + 各部委"
+
+  # 六部 - 执行层
+  ministries:
+    - ministryId: li-ministry
+      name: 吏部
+      responsibilities:
+        - "官员任免考核"
+        - "人事管理"
+        - "编制管理"
+        - "官员升降赏罚"
+      modernEquivalent: "中组部 + 人社部"
+      
+    - ministryId: hu-ministry
+      name: 户部
+      responsibilities:
+        - "户籍管理"
+        - "财政税收"
+        - "钱粮收支"
+        - "土地管理"
+      modernEquivalent: "财政部 + 税务总局 + 民政部"
+      
+    - ministryId: li-ministry-rites
+      name: 礼部
+      responsibilities:
+        - "礼仪制度"
+        - "外交接待"
+        - "科举考试"
+        - "文化教育"
+      modernEquivalent: "外交部 + 教育部 + 文旅部"
+      
+    - ministryId: bing-ministry
+      name: 兵部
+      responsibilities:
+        - "军事行政"
+        - "武官选拔"
+        - "军械管理"
+        - "边防事务"
+      modernEquivalent: "国防部 + 中央军委"
+      
+    - ministryId: xing-ministry
+      name: 刑部
+      responsibilities:
+        - "司法审判"
+        - "律法制定"
+        - "监狱管理"
+        - "案件复核"
+      modernEquivalent: "司法部 + 最高法 + 最高检"
+      
+    - ministryId: gong-ministry
+      name: 工部
+      responsibilities:
+        - "工程建设"
+        - "水利交通"
+        - "工匠管理"
+        - "器物制造"
+      modernEquivalent: "住建部 + 交通部 + 水利部"
+
+# 决策工作流程
+decisionWorkflow:
+  phases:
+    - phase: proposal
+      name: 提案阶段
+      responsible: "任何部门或地方官员"
+      output: "奏折/提案"
+      
+    - phase: drafting
+      name: 起草诏令
+      responsible: 中书省
+      activities:
+        - "研究提案内容"
+        - "草拟诏书敕令"
+        - "提出初步建议"
+      output: "诏令草稿"
+      
+    - phase: review
+      name: 审议封驳
+      responsible: 门下省
+      activities:
+        - "审核诏令合法性"
+        - "评估政策影响"
+        - "可提出异议或封还重拟"
+      output: "审核意见（通过/修改/驳回）"
+      
+    - phase: approval
+      name: 皇帝批准
+      responsible: "皇帝"
+      activities:
+        - "审阅通过的诏令"
+        - "画敕认可"
+      output: "正式诏令"
+      
+    - phase: assignment
+      name: 分派执行
+      responsible: "尚书省"
+      activities:
+        - "接收正式诏令"
+        - "确定执行部门（六部）"
+        - "制定实施方案"
+      output: "执行计划"
+      
+    - phase: execution
+      name: 具体执行
+      responsible: "六部及相关机构"
+      activities:
+        - "按职责分工实施"
+        - "定期汇报进度"
+        - "处理突发问题"
+      output: "执行结果"
+      
+    - phase: oversight
+      name: 监督考核
+      responsible: 
+        - "门下省（监督）"
+        - "吏部（考核）"
+      activities:
+        - "检查执行情况"
+        - "评估政策效果"
+        - "奖惩相关官员"
+      output: "考核报告"
+
+# 场景化团队配方
+scenarios:
+  - scenarioId: policy-making
+    name: 政策制定
+    description: "制定新的国家政策或法规"
+    complexity: complex
+    duration: "4-8 weeks"
+    
+    teamComposition:
+      - department: 中书省
+        roles:
+          - role: 中书令
+            count: 1
+            allocation: 1.0
+          - role: 中书侍郎
+            count: 2
+            allocation: 1.0
+          - role: 起居郎 (记录官)
+            count: 1
+            allocation: 0.5
+      
+      - department: 门下省
+        roles:
+          - role: 侍中
+            count: 1
+            allocation: 1.0
+          - role: 给事中 (审议官)
+            count: 2
+            allocation: 1.0
+      
+      - department: 相关六部
+        dynamic: true
+        note: "根据政策领域选择对应部门参与"
+    
+    workflow: full-process
+    
+  - scenarioId: personnel-appointment
+    name: 官员任免
+    description: "重要官员的选拔和任命"
+    complexity: medium
+    duration: "2-4 weeks"
+    
+    teamComposition:
+      - department: 吏部
+        roles:
+          - role: 吏部尚书
+            count: 1
+            allocation: 1.0
+          - role: 考功司官员
+            count: 2
+            allocation: 1.0
+      
+      - department: 中书省
+        roles:
+          - role: 中书舍人
+            count: 1
+            allocation: 0.5
+      
+      - department: 门下省
+        roles:
+          - role: 谏议大夫
+            count: 1
+            allocation: 0.5
+    
+    workflow: simplified
+    
+  - scenarioId: infrastructure-project
+    name: 大型工程建设
+    description: "水利、道路、宫殿等大型工程"
+    complexity: very_complex
+    duration: "3-12 months"
+    
+    teamComposition:
+      - department: 工部
+        roles:
+          - role: 工部尚书
+            count: 1
+            allocation: 1.0
+          - role: 工匠总管
+            count: 2
+            allocation: 1.0
+          - role: 测量师
+            count: 3
+            allocation: 1.0
+      
+      - department: 户部
+        roles:
+          - role: 财政官员
+            count: 2
+            allocation: 1.0
+            responsibility: "资金拨付和管理"
+      
+      - department: 兵部
+        roles:
+          - role: 军工协调官
+            count: 1
+            allocation: 0.5
+            responsibility: "征调民工和士兵"
+    
+    workflow: project-based
+    
+  - scenarioId: diplomatic-reception
+    name: 外交接待
+    description: "接待外国使节和朝贡团"
+    complexity: medium
+    duration: "1-2 weeks"
+    
+    teamComposition:
+      - department: 礼部
+        roles:
+          - role: 礼部尚书
+            count: 1
+            allocation: 1.0
+          - role: 主客司官员
+            count: 2
+            allocation: 1.0
+          - role: 翻译官
+            count: 2
+            allocation: 1.0
+      
+      - department: 中书省
+        roles:
+          - role: 诏书起草官
+            count: 1
+            allocation: 0.3
+    
+    workflow: event-based
+
+# 角色能力模型库
+roleDefinitions:
+  - roleId: zhongshu-ling
+    title: 中书令
+    department: 中书省
+    level: executive
+    responsibilities:
+      - "主持中书省工作"
+      - "草拟重要诏令"
+      - "参与最高决策"
+    competencies:
+      - "文采斐然"
+      - "政治敏锐"
+      - "战略思维"
+  
+  - roleId: shizhong
+    title: 侍中
+    department: 门下省
+    level: executive
+    responsibilities:
+      - "主持门下省工作"
+      - "审核诏令"
+      - "向皇帝进谏"
+    competencies:
+      - "刚正不阿"
+      - "洞察力强"
+      - "敢于直言"
+  
+  - roleId: shangshu-ling
+    title: 尚书令
+    department: 尚书省
+    level: executive
+    responsibilities:
+      - "统领六部"
+      - "组织实施政令"
+      - "协调各部门工作"
+    competencies:
+      - "卓越的执行力"
+      - "组织协调能力强"
+      - "知人善任"
+  
+  - roleId: minister-head
+    title: 六部尚书
+    department: "六部"
+    level: ministerial
+    responsibilities:
+      - "主持本部工作"
+      - "制定实施方案"
+      - "管理下属官员"
+    competencies:
+      - "专业能力强"
+      - "管理经验丰富"
+      - "责任心强"
+
+# 约束条件
+constraints:
+  hierarchy:
+    strictHierarchy: true
+    reporting: "下级对上级负责，逐级汇报"
+  
+  checksAndBalances:
+    - "中书省与门下省相互制衡"
+    - "决策与审议分离"
+    - "执行受监督"
+  
+  efficiency:
+    emergencyBypass: "军国大事可简化流程，先执行后补手续"
+    routineMatters: "日常事务由尚书省直接处理"
+
+# 扩展点
+extensions:
+  additionalDepartments:
+    - "枢密院（军事机密）"
+    - "御史台（监察百官）"
+    - "翰林院（顾问咨询）"
+  
+  localGovernment:
+    - "道/州/县三级地方政府"
+    - "与中央六部对应"

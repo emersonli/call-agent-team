@@ -1,6 +1,6 @@
 # Team Orchestrator Examples
 
-## 示例 1: MVP 开发 - 电商小程序
+## 示例 1: MVP 开发 - 电商小程序（应用研发团队）
 
 ### 用户输入
 ```
@@ -9,7 +9,7 @@
 
 ### AI 分析过程
 
-**Step 1: 任务分析**
+**Step 1: 任务分析** - 识别为软件开发领域
 ```bash
 python scripts/analyze_task.py "电商小程序，商品展示、购物车、支付，预算 10 万，1 个月"
 ```
@@ -23,7 +23,8 @@ python scripts/analyze_task.py "电商小程序，商品展示、购物车、支
     "budget": 100000,
     "deadline": "1 个月",
     "urgent": true
-  }
+  },
+  "domain": "software-development"
 }
 ```
 
@@ -48,8 +49,7 @@ python scripts/calculate_team_size.py configs/teams/dev-team.yaml medium mvp-dev
           "roleId": "product-manager",
           "title": "产品经理",
           "count": 1,
-          "allocation": 1.0,
-          "keyDeliverables": ["PRD 文档", "产品原型", "用户故事"]
+          "allocation": 1.0
         }
       ]
     },
@@ -58,41 +58,8 @@ python scripts/calculate_team_size.py configs/teams/dev-team.yaml medium mvp-dev
       "duration": "2.5 weeks",
       "roles": [
         {
-          "roleId": "product-manager",
-          "title": "产品经理",
-          "count": 1,
-          "allocation": 0.3
-        },
-        {
-          "roleId": "ui-ux-designer",
-          "title": "UI/UX 设计师",
-          "count": 1,
-          "allocation": 0.5,
-          "keyDeliverables": ["UI 设计稿", "交互规范"]
-        },
-        {
           "roleId": "frontend-dev",
           "title": "前端工程师",
-          "count": 1,
-          "allocation": 1.0,
-          "focus": "小程序开发"
-        },
-        {
-          "roleId": "backend-dev",
-          "title": "后端工程师",
-          "count": 1,
-          "allocation": 1.0,
-          "focus": "API 和数据库"
-        }
-      ]
-    },
-    {
-      "name": "测试与上线",
-      "duration": "3-5 days",
-      "roles": [
-        {
-          "roleId": "qa-engineer",
-          "title": "测试工程师",
           "count": 1,
           "allocation": 1.0
         },
@@ -100,291 +67,439 @@ python scripts/calculate_team_size.py configs/teams/dev-team.yaml medium mvp-dev
           "roleId": "backend-dev",
           "title": "后端工程师",
           "count": 1,
-          "allocation": 0.5,
-          "focus": "部署"
+          "allocation": 1.0
         }
       ]
     }
   ],
-  "collaborationMode": "rapid-response",
   "totalEstimatedCost": 98000,
-  "estimatedDuration": "4 weeks",
-  "budgetStatus": "within_budget"
+  "estimatedDuration": "4 weeks"
 }
 ```
 
 ---
 
-## 示例 2: 完整应用 - 企业 CRM 系统
+## 示例 2: 政策制定 - 环保新规（政府行政团队）
 
 ### 用户输入
 ```
-需要开发一个企业级 CRM 系统，包含客户管理、销售漏斗、报表分析、权限管理，工期 3 个月，质量要求高
+需要制定一个新的环保政策，涉及排污标准设定、违规处罚措施、执行监督机制
 ```
 
-### AI 分析
+### AI 分析过程
 
-**场景识别**: `full-stack-app`  
-**复杂度**: `complex`  
-**约束**: 工期 12 周，质量要求高
-
-### 输出团队配置
-
-```json
-{
-  "teamType": "dev-team",
-  "scenario": "full-stack-app",
-  "taskName": "企业 CRM 系统开发",
-  "complexity": "complex",
-  "phases": [
-    {
-      "name": "需求分析与规划",
-      "duration": "2 weeks",
-      "roles": [
-        {
-          "roleId": "product-manager",
-          "title": "产品经理",
-          "count": 1,
-          "allocation": 1.0,
-          "deliverables": ["MRD", "PRD", "用户故事地图", "原型图"]
-        }
-      ]
-    },
-    {
-      "name": "UI/UX 设计",
-      "duration": "3 weeks",
-      "roles": [
-        {
-          "roleId": "product-manager",
-          "count": 1,
-          "allocation": 0.3
-        },
-        {
-          "roleId": "ui-ux-designer",
-          "title": "UI/UX 设计师",
-          "count": 1,
-          "allocation": 1.0,
-          "deliverables": ["视觉规范", "完整设计稿", "交互原型", "切图资源"]
-        }
-      ]
-    },
-    {
-      "name": "迭代开发",
-      "duration": "8 weeks",
-      "iterations": 4,
-      "sprintLength": "2 weeks",
-      "roles": [
-        {
-          "roleId": "product-manager",
-          "count": 1,
-          "allocation": 0.5
-        },
-        {
-          "roleId": "frontend-dev",
-          "title": "前端工程师",
-          "count": 2,
-          "allocation": 1.0,
-          "specialization": [
-            {"level": "senior", "count": 1, "focus": "架构 + 核心模块"},
-            {"level": "mid", "count": 1, "focus": "页面开发"}
-          ]
-        },
-        {
-          "roleId": "backend-dev",
-          "title": "后端工程师",
-          "count": 2,
-          "allocation": 1.0,
-          "specialization": [
-            {"level": "architect", "count": 1, "focus": "系统设计"},
-            {"level": "developer", "count": 1, "focus": "业务逻辑"}
-          ]
-        },
-        {
-          "roleId": "qa-engineer",
-          "title": "测试工程师",
-          "count": 1,
-          "allocation": 0.5,
-          "entryPoint": "Sprint 1 中期"
-        }
-      ]
-    },
-    {
-      "name": "系统测试与修复",
-      "duration": "2 weeks",
-      "roles": [
-        {
-          "roleId": "qa-engineer",
-          "count": 1,
-          "allocation": 1.0,
-          "focus": ["系统集成测试", "性能测试", "安全测试"]
-        },
-        {
-          "roleId": "frontend-dev",
-          "count": 2,
-          "allocation": 0.5,
-          "focus": "Bug 修复"
-        },
-        {
-          "roleId": "backend-dev",
-          "count": 2,
-          "allocation": 0.5,
-          "focus": "Bug 修复"
-        }
-      ]
-    },
-    {
-      "name": "部署上线",
-      "duration": "1 week",
-      "roles": [
-        {
-          "roleId": "devops-engineer",
-          "title": "运维工程师",
-          "count": 1,
-          "allocation": 1.0,
-          "deliverables": ["CI/CD", "生产环境", "监控告警"]
-        },
-        {
-          "roleId": "backend-dev",
-          "count": 1,
-          "allocation": 0.5
-        }
-      ]
-    }
-  ],
-  "collaborationMode": "agile-sprint",
-  "mandatoryRoles": ["qa-engineer"],
-  "codeReviewRequired": true,
-  "testCoverageMin": 0.7,
-  "totalEstimatedCost": 485000,
-  "estimatedDuration": "12 weeks"
-}
-```
-
----
-
-## 示例 3: 紧急项目 - 活动落地页
-
-### 用户输入
-```
-下周有个营销活动，急需做一个 H5 落地页，有抽奖、分享、排行榜功能，很着急！
-```
-
-### AI 分析
-
-**场景识别**: `mvp-development`  
-**复杂度**: `simple` (但时间紧急)  
-**约束**: 工期 1 周，urgent=true
-
-### 输出团队配置
-
-```json
-{
-  "teamType": "dev-team",
-  "scenario": "mvp-development",
-  "taskName": "营销活动 H5 落地页",
-  "complexity": "simple",
-  "urgency": "high",
-  "phases": [
-    {
-      "name": "需求确认",
-      "duration": "0.5 day",
-      "roles": [
-        {
-          "roleId": "product-manager",
-          "count": 1,
-          "allocation": 0.5
-        }
-      ]
-    },
-    {
-      "name": "快速开发",
-      "duration": "3-4 days",
-      "roles": [
-        {
-          "roleId": "ui-ux-designer",
-          "count": 1,
-          "allocation": 0.5
-        },
-        {
-          "roleId": "frontend-dev",
-          "count": 2,
-          "allocation": 1.0,
-          "note": "因时间紧急，增加 1 名前端并行开发"
-        },
-        {
-          "roleId": "backend-dev",
-          "count": 1,
-          "allocation": 1.0
-        }
-      ]
-    },
-    {
-      "name": "测试上线",
-      "duration": "1-2 days",
-      "roles": [
-        {
-          "roleId": "qa-engineer",
-          "count": 1,
-          "allocation": 1.0
-        },
-        {
-          "roleId": "devops-engineer",
-          "count": 1,
-          "allocation": 0.5
-        }
-      ]
-    }
-  ],
-  "collaborationMode": "rapid-response",
-  "rushMultiplier": 1.5,
-  "totalEstimatedCost": 45000,
-  "estimatedDuration": "1 week",
-  "riskWarning": "工期紧张，建议砍掉非核心功能"
-}
-```
-
----
-
-## 示例 4: 角色能力查询
-
-### 查询前端工程师的详细定义
-
+**Step 1: 任务分析** - 识别为政府行政领域
 ```bash
-cat configs/roles/frontend-dev.yaml
+python scripts/analyze_task.py "环保政策，排污标准，处罚措施，执行监督"
 ```
 
-关键信息：
-- **能力模型**: HTML/CSS(专家), JavaScript/TS(专家), React/Vue(高级)
-- **典型职责**: 页面实现、API 对接、单元测试、Code Review
-- **协作边界**: 
-  - 与产品：需求评审、功能验收
-  - 与设计：UI 走查、还原度确认
-  - 与后端：接口定义、联调测试
-- **工作量估算**: 
-  - 简单页面：4-8 小时
-  - 中等功能：16-40 小时
-  - 复杂交互：40-120 小时
+输出：
+```json
+{
+  "scenarioId": "policy-making",
+  "complexity": "complex",
+  "constraints": {},
+  "domain": "government-administration"
+}
+```
+
+**Step 2: 团队匹配** - 选择三省六部制
+```bash
+python scripts/calculate_team_size.py configs/teams/government-team.yaml complex policy-making
+```
+
+**Step 3: 输出团队配置**
+```json
+{
+  "teamType": "government-team",
+  "scenario": "policy-making",
+  "taskName": "环保政策制定",
+  "complexity": "complex",
+  "workflow": "三省六部制",
+  "phases": [
+    {
+      "phase": "提案",
+      "name": "政策提案",
+      "responsible": "生态环境部/地方政府",
+      "output": "奏折/提案"
+    },
+    {
+      "phase": "起草",
+      "name": "起草诏令",
+      "department": "中书省",
+      "roles": [
+        {
+          "roleId": "zhongshu-ling",
+          "title": "中书令",
+          "count": 1,
+          "allocation": 1.0,
+          "responsibility": "主持诏令起草"
+        },
+        {
+          "roleId": "zhongshu-shilang",
+          "title": "中书侍郎",
+          "count": 2,
+          "allocation": 1.0,
+          "responsibility": "具体撰写"
+        }
+      ],
+      "output": "诏令草稿"
+    },
+    {
+      "phase": "审议",
+      "name": "审议封驳",
+      "department": "门下省",
+      "roles": [
+        {
+          "roleId": "shizhong",
+          "title": "侍中",
+          "count": 1,
+          "allocation": 1.0,
+          "responsibility": "主持审议"
+        },
+        {
+          "roleId": "jishizhong",
+          "title": "给事中",
+          "count": 2,
+          "allocation": 1.0,
+          "responsibility": "详细审核"
+        }
+      ],
+      "activities": [
+        "审核合法性",
+        "评估影响",
+        "可提出异议或封还重拟"
+      ],
+      "output": "审核意见"
+    },
+    {
+      "phase": "批准",
+      "name": "皇帝批准",
+      "responsible": "最高决策者",
+      "output": "正式诏令"
+    },
+    {
+      "phase": "执行",
+      "name": "组织实施",
+      "department": "尚书省 + 相关部门",
+      "roles": [
+        {
+          "roleId": "minister-head",
+          "title": "生态环境部尚书",
+          "count": 1,
+          "allocation": 1.0,
+          "responsibility": "牵头实施"
+        },
+        {
+          "roleId": "xing-ministry-official",
+          "title": "刑部官员",
+          "count": 1,
+          "allocation": 0.5,
+          "responsibility": "法律条文制定"
+        }
+      ],
+      "output": "执果"
+    },
+    {
+      "phase": "监督",
+      "name": "监督考核",
+      "responsible": ["门下省", "吏部"],
+      "activities": [
+        "检查执行情况",
+        "评估政策效果",
+        "奖惩相关官员"
+      ],
+      "output": "考核报告"
+    }
+  ],
+  "estimatedDuration": "6-8 weeks",
+  "characteristics": [
+    "决策、审议、执行三分离",
+    "相互制衡",
+    "逐级汇报"
+  ]
+}
+```
 
 ---
 
-## 示例 5: 协作模式选择
+## 示例 3: 官员任免 - 地方知府选拔（政府行政团队）
 
-### 场景 A: 常规产品开发
-推荐：`agile-sprint`
-- 2 周一个 Sprint
-- 完整的 Scrum 仪式
-- 适合稳定迭代
+### 用户输入
+```
+江南某府知府职位空缺，需要选拔新任官员，请组织考察和任命
+```
 
-### 场景 B: 紧急 MVP
-推荐：`rapid-response`
-- 日循环开发
-- 最小化流程
-- 每晚可演示
+### AI 分析
 
-### 决策依据
-| 维度 | Agile Sprint | Rapid Response |
-|-----|-------------|----------------|
-| 工期 | 2 周+ | <2 周 |
-| 流程开销 | 中 | 低 |
-| 文档要求 | 完整 | 最小化 |
-| 适用场景 | 常规项目 | 紧急/MVP |
+**场景识别**: `personnel-appointment`  
+**复杂度**: `medium`  
+**主导部门**: 吏部
+
+### 输出团队配置
+
+```json
+{
+  "teamType": "government-team",
+  "scenario": "personnel-appointment",
+  "taskName": "知府选拔任命",
+  "complexity": "medium",
+  "workflow": "简化流程",
+  "departments": [
+    {
+      "name": "吏部",
+      "role": "主导",
+      "activities": [
+        "考察候选人资格",
+        "查阅政绩档案",
+        "组织面试考核",
+        "提出推荐名单"
+      ],
+      "roles": [
+        {
+          "roleId": "li-minister",
+          "title": "吏部尚书",
+          "count": 1,
+          "allocation": 1.0
+        },
+        {
+          "roleId": "kaogong-official",
+          "title": "考功司官员",
+          "count": 2,
+          "allocation": 1.0
+        }
+      ]
+    },
+    {
+      "name": "中书省",
+      "role": "参与",
+      "activities": ["起草任命诏书"],
+      "roles": [
+        {
+          "roleId": "zhongshu-sheren",
+          "title": "中书舍人",
+          "count": 1,
+          "allocation": 0.5
+        }
+      ]
+    },
+    {
+      "name": "门下省",
+      "role": "监督",
+      "activities": ["审核任命程序", "提出异议（如有）"],
+      "roles": [
+        {
+          "roleId": "jianyi-dafu",
+          "title": "谏议大夫",
+          "count": 1,
+          "allocation": 0.5
+        }
+      ]
+    }
+  ],
+  "estimatedDuration": "2-3 weeks",
+  "process": [
+    "吏部考察 → 提出推荐",
+    "中书省起草诏书 → 门下省审核",
+    "皇帝批准 → 正式任命"
+  ]
+}
+```
+
+---
+
+## 示例 4: 大型工程 - 黄河治理（政府行政团队）
+
+### 用户输入
+```
+黄河泛滥成灾，需要组织大规模治理工程，包括加固堤坝、疏浚河道、移民安置
+```
+
+### AI 分析
+
+**场景识别**: `infrastructure-project`  
+**复杂度**: `very_complex`  
+**主导部门**: 工部
+
+### 输出团队配置
+
+```json
+{
+  "teamType": "government-team",
+  "scenario": "infrastructure-project",
+  "taskName": "黄河治理工程",
+  "complexity": "very_complex",
+  "duration": "6-12 months",
+  "leadDepartment": "工部",
+  "coordination": [
+    {
+      "department": "工部",
+      "role": "总负责",
+      "responsibilities": [
+        "工程规划设计",
+        "组织施工",
+        "质量监督"
+      ],
+      "roles": [
+        {
+          "roleId": "gong-minister",
+          "title": "工部尚书",
+          "count": 1
+        },
+        {
+          "roleId": "engineer-chief",
+          "title": "工匠总管",
+          "count": 3
+        },
+        {
+          "roleId": "surveyor",
+          "title": "测量师",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "department": "户部",
+      "role": "资金保障",
+      "responsibilities": [
+        "财政拨款",
+        "粮食供应",
+        "移民补偿"
+      ],
+      "roles": [
+        {
+          "roleId": "hu-minister",
+          "title": "户部尚书",
+          "count": 1
+        },
+        {
+          "roleId": "finance-official",
+          "title": "财政官员",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "department": "兵部",
+      "role": "人力支援",
+      "responsibilities": [
+        "征调民夫",
+        "派遣士兵协助",
+        "维持秩序"
+      ],
+      "roles": [
+        {
+          "roleId": "bing-official",
+          "title": "兵部官员",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "department": "刑部",
+      "role": "执法监督",
+      "responsibilities": [
+        "惩治贪污",
+        "处理纠纷"
+      ],
+      "roles": [
+        {
+          "roleId": "xing-official",
+          "title": "刑部官员",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "estimatedBudget": "50-100 万两白银",
+  "riskFactors": [
+    "工期长，需防中途变故",
+    "资金量大，需防贪污",
+    "民工众多，需防骚乱"
+  ]
+}
+```
+
+---
+
+## 示例 5: 跨领域协作 - 教育改革
+
+### 用户输入
+```
+要推行新的科举制度改革，减少诗赋比重，增加实务策论，同时建立新式学堂
+```
+
+### AI 分析
+
+这是一个**跨部门协作**的复杂任务：
+- **礼部**：主导科举改革
+- **工部**：学堂建设
+- **户部**：经费保障
+
+### 输出团队配置
+
+```json
+{
+  "teamType": "government-team",
+  "scenario": "cross-department-reform",
+  "taskName": "科举制度改革",
+  "complexity": "very_complex",
+  "leadDepartment": "礼部",
+  "supportingDepartments": ["工部", "户部"],
+  "workflow": {
+    "phase1": {
+      "name": "方案制定",
+      "lead": "礼部 + 中书省",
+      "duration": "4 weeks"
+    },
+    "phase2": {
+      "name": "审议批准",
+      "lead": "门下省",
+      "duration": "2 weeks"
+    },
+    "phase3": {
+      "name": "分头实施",
+      "parallel": [
+        {"dept": "礼部", "task": "改革考试内容"},
+        {"dept": "工部", "task": "建设新式学堂"},
+        {"dept": "户部", "task": "拨付经费"}
+      ],
+      "duration": "12 weeks"
+    },
+    "phase4": {
+      "name": "验收总结",
+      "lead": ["门下省", "吏部"],
+      "duration": "2 weeks"
+    }
+  }
+}
+```
+
+---
+
+## 对比分析
+
+### 不同领域的决策流程对比
+
+| 维度 | 应用研发 | 政府行政 |
+|-----|---------|---------|
+| 决策模式 | 产品经理主导 | 三省分工制衡 |
+| 流程特点 | 敏捷迭代 | 严格层级 |
+| 文档要求 | PRD+ 技术文档 | 诏令 + 奏折 |
+| 审批环节 | 较少（灵活） | 较多（严谨） |
+| 适用场景 | 商业产品 | 公共政策 |
+
+### 渐进式披露实践
+
+**Level 1 (本文档)**: 快速了解各领域如何使用  
+**Level 2**: 查看具体配置文件了解详细架构  
+**Level 3**: 参考 `reference.md` 深度案例
+
+---
+
+## 使用建议
+
+1. **明确任务领域**：先判断是软件/政府/企业/教育等领域
+2. **选择对应配置**：加载相应的团队配置文件
+3. **调整规模**：根据复杂度和约束条件微调
+4. **参考历史**：查看类似项目的实际执行情况
