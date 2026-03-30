@@ -46,7 +46,7 @@ preflight_checks:
     
   eng_review:
     check: "Eng Review 已完成"
-    verify: "~/.gstack/projects/{slug}/eng-review-complete.md exists"
+    verify: "~/.team-orchestrator/projects/{slug}/eng-review-complete.md exists"
     action_if_fail: "请先运行 /plan-eng-review"
     
   merge_base:
@@ -605,5 +605,5 @@ release_metrics:
 
 **版本**: 1.0.0  
 **创建日期**: 2026-03-30  
-**灵感来源**: [gstack /ship](https://github.com/garrytan/gstack)  
+**行业参考**: 业界最佳实践  
 **维护者**: emersonli

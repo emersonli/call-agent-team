@@ -594,5 +594,5 @@ release_gates:
 
 **版本**: 1.0.0  
 **创建日期**: 2026-03-30  
-**灵感来源**: [gstack /qa](https://github.com/garrytan/gstack)  
+**行业参考**: 业界最佳实践  
 **维护者**: emersonli

@@ -1,6 +1,6 @@
 # 阶段化技能库
 
-本目录包含软件研发领域的深度技能配置，受 [gstack](https://github.com/garrytan/gstack) 启发。
+本目录包含软件研发领域的深度技能配置。
 
 ## 🎯 设计理念
 
@@ -314,8 +314,7 @@ def calculate_health_score(test_results):
 - 《The Mom Test》- Rob Fitzpatrick
 - 《Sprint》- Jake Knapp
 
-### 灵感来源
-- [gstack](https://github.com/garrytan/gstack) - Garry Tan 的 AI 结对编程项目
+### 参考资料
 - [ETHOS.md](../../ETHOS.md) - 我们的核心理念
 - [ARCHITECTURE.md](../../ARCHITECTURE.md) - 系统架构文档
 

@@ -1,6 +1,6 @@
 # 软件研发领域深度技能配置
 
-> 受 gstack 启发，为应用研发团队添加完整的研发生命周期管理
+> 为应用研发团队添加完整的研发生命周期管理
 
 ## 🎯 核心价值主张
 
@@ -240,7 +240,7 @@ output: "故障处理矩阵 + 容错代码模板"
 
 #### Step 4: 生成测试计划
 
-**输出文件**: `~/.gstack/projects/{slug}/{user}-{branch}-eng-review-test-plan.md`
+**输出文件**: `~/.team-orchestrator/projects/{slug}/{user}-{branch}-eng-review-test-plan.md`
 
 ```markdown
 # 测试计划
@@ -438,7 +438,7 @@ browser_automation:
 #### 测试产物
 
 ```
-.gstack/qa-reports/
+.team-orchestrator/qa-reports/
 ├── qa-report-{domain}-{date}.md
 ├── screenshots/
 │   ├── initial.png
@@ -608,7 +608,7 @@ deliverables:
 
 ```yaml
 state_storage:
-  location: "~/.gstack/projects/{project_slug}/"
+  location: "~/.team-orchestrator/projects/{project_slug}/"
   
   artifacts:
     - design_docs/
@@ -691,5 +691,4 @@ flow_metrics:
 
 **版本**: 1.0.0  
 **创建日期**: 2026-03-28  
-**维护者**: emersonli  
-**灵感来源**: [gstack](https://github.com/garrytan/gstack)
+**维护者**: emersonli
