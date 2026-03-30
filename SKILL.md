@@ -90,6 +90,8 @@ description_zh: 为多 Agent 框架自动匹配专业团队。支持应用研发
 
 适用场景：软件开发、网站建设、移动应用等
 
+#### 团队配置模式
+
 **典型阶段**:
 1. 需求分析与 PRD (10-15%)
 2. UI/UX 设计 (15-20%)
@@ -106,6 +108,34 @@ description_zh: 为多 Agent 框架自动匹配专业团队。支持应用研发
 ```
 
 详细配置见：[configs/teams/dev-team.yaml](configs/teams/dev-team.yaml)
+
+#### 全生命周期技能链（推荐）
+
+对于完整的软件研发项目，推荐使用以下阶段化技能：
+
+| 阶段 | 技能 | 功能 | 输入 | 输出 |
+|------|------|------|------|------|
+| 1️⃣ | `/office-hours` | 问题重构和需求验证 | 模糊的需求想法 | 设计方案文档 |
+| 2️⃣ | `/plan-eng-review` | 架构设计和技术评审 | 设计方案 | 架构图 + 测试计划 |
+| 3️⃣ | `/design-review` | UI/UX 审计和优化 | 前端代码/设计稿 | UI 审计报告 |
+| 4️⃣ | `/qa` | Diff-aware 智能测试 | 代码变更 + 测试计划 | QA 报告 + 健康评分 |
+| 5️⃣ | `/ship` | 自动化发布 | 测试通过的代码 | PR/MR + 发布说明 |
+
+**使用方式**:
+```bash
+# 从创意开始完整流程
+/office-hours → 生成交互式设计文档
+/plan-eng-review → 基于设计文档做架构
+/design-review → 完成前端后做 UI 审计
+/qa → 提交前自动测试和验证
+/ship → 一键生成 PR 和发布说明
+
+# 也可以单独使用某个技能
+/qa # 仅运行测试和健康检查
+/design-review # 仅做 UI 走查
+```
+
+详细文档见：[软件研发生命周期技能](docs/SOFTWARE_DEV_LIFECYCLE_SKILLS.md)
 
 ### 政府行政领域
 
@@ -241,6 +271,7 @@ roleDefinitions:
 - [使用示例](examples.md) - 实际案例演示
 - [软件研发参考](docs/software-development-reference.md) - 软件开发深度指南
 - [政府行政参考](docs/government-administration-reference.md) - 三省六部制详解
+- [软件研发生命周期技能](docs/SOFTWARE_DEV_LIFECYCLE_SKILLS.md) - gstack 启发的完整研发流程
 - [GitHub 仓库](https://github.com/emersonli/call-agent-team) - 源代码
 
 **团队配置**:
@@ -248,12 +279,19 @@ roleDefinitions:
 - [政府行政团队](configs/teams/government-team.yaml) - 政策制定
 - _更多团队类型持续更新中..._
 
+**阶段化技能**:
+- [/office-hours](configs/skills/office-hours/SKILL.md) - 问题重构专家
+- [/plan-eng-review](configs/skills/plan-eng-review/SKILL.md) - 架构设计专家
+- [/design-review](configs/skills/design-review/SKILL.md) - UI/UX 审计专家
+- [/qa](configs/skills/qa/SKILL.md) - 智能测试专家
+- [/ship](configs/skills/ship/SKILL.md) - 自动化发布专家
+
 **协作模式库**:
 - [软件研发协作模式](collaboration/software/) - agile-sprint, rapid-response
 - _更多领域协作模式规划中..._
 
 ---
 
-**版本**: 2.0.0  
-**最后更新**: 2026-03-28  
+**版本**: 2.3.0  
+**最后更新**: 2026-03-30  
 **维护者**: emersonli
